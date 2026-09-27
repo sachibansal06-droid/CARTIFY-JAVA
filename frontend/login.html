@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cartify | Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eee9ff, #ffffff);
+        }
+
+        .auth-container {
+            width: 900px;
+            max-width: 94%;
+            min-height: 560px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+        }
+
+        .auth-left {
+            background: #18181b;
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .auth-left h1 {
+            font-size: 46px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .auth-left p {
+            color: #bdbdbd;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .auth-right {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-right h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .role-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 11px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .role-btn.active {
+            background: #6c4df6;
+            color: white;
+            border-color: #6c4df6;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+            border-color: #6c4df6;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #6c4df6;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .login-btn:hover {
+            background: #5840d5;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .register-link button {
+            border: none;
+            background: none;
+            color: #6c4df6;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+        @media (max-width: 700px) {
+
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-left {
+                display: none;
+            }
+
+            .auth-right {
+                padding: 35px 25px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-left">
+
+            <div class="logo">
+                🛍️ Cartify
+            </div>
+
+            <h1>
+                Shop smarter.<br>
+                Live better.
+            </h1>
+
+            <p>
+                Your simple and smart shopping experience.
+                Login to continue shopping with Cartify.
+            </p>
+
+        </div>
+
+
+        <div class="auth-right">
+
+            <h2>Welcome back 👋</h2>
+
+            <p class="subtitle">
+                Login to your Cartify account
+            </p>
+
+
+            <div class="role-buttons">
+
+                <button
+                    class="role-btn active"
+                    id="customerBtn"
+                    onclick="selectRole('CUSTOMER')">
+                    👤 Customer
+                </button>
+
+                <button
+                    class="role-btn"
+                    id="adminBtn"
+                    onclick="selectRole('ADMIN')">
+                    🧑‍💼 Admin
+                </button>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password">
+
+            </div>
+
+
+            <button
+                class="login-btn"
+                onclick="login()">
+
+                Login →
+
+            </button>
+
+
+            <div
+                id="message"
+                class="message">
+            </div>
+
+
+            <div class="register-link">
+
+                Don't have an account?
+
+                <button onclick="register()">
+                    Create account
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const API = "http://localhost:8080/api";
+
+        let selectedRole = "CUSTOMER";
+
+
+        function selectRole(role) {
+
+            selectedRole = role;
+
+            document
+                .getElementById("customerBtn")
+                .classList
+                .remove("active");
+
+            document
+                .getElementById("adminBtn")
+                .classList
+                .remove("active");
+
+
+            if (role === "CUSTOMER") {
+
+                document
+                    .getElementById("customerBtn")
+                    .classList
+                    .add("active");
+
+            } else {
+
+                document
+                    .getElementById("adminBtn")
+                    .classList
+                    .add("active");
+
+            }
+
+        }
+
+
+        async function login() {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            if (!email || !password) {
+
+                showMessage(
+                    "Please enter email and password.",
+                    "red"
+                );
+
+                return;
+            }
+
+
+            try {
+
+                const response = await fetch(
+                    `${API}/auth/login`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+                    }
+                );
+
+
+                const data = await response.json();
+
+
+                if (!response.ok) {
+
+                    showMessage(
+                        data.message || "Login failed.",
+                        "red"
+                    );
+
+                    return;
+                }
+
+
+                if (data.role !== selectedRole) {
+
+                    showMessage(
+                        `This account is a ${data.role} account.`,
+                        "red"
+                    );
+
+                    return;
+                }
+
+
+                localStorage.setItem(
+                    "cartifyUser",
+                    JSON.stringify(data)
+                );
+
+
+                showMessage(
+                    "Login successful! Redirecting...",
+                    "green"
+                );
+
+
+                setTimeout(() => {
+
+    if (data.role === "ADMIN") {
+        window.location.href = "admin.html";
+    } else {
+        window.location.href = "index.html";
+    }
+
+}, 800);
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showMessage(
+                    "Backend is not connected.",
+                    "red"
+                );
+
+            }
+
+        }
+
+
+        async function register() {
+
+    const name = prompt("Enter your name:");
+
+    if (!name) {
+        return;
+    }
+
+    const email = prompt("Enter your email:");
+
+    if (!email) {
+        return;
+    }
+
+    const password = prompt("Create a password:");
+
+    if (!password) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `${API}/auth/register`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            showMessage(
+                data.message || "Registration failed.",
+                "red"
+            );
+
+            return;
+        }
+
+        showMessage(
+            "Account created successfully! Please login.",
+            "green"
+        );
+
+        document.getElementById("email").value = email;
+        document.getElementById("password").value = password;
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Backend is not connected.",
+            "red"
+        );
+    }
+}
+
+
+        function showMessage(message, color) {
+
+            const element =
+                document.getElementById("message");
+
+            element.textContent = message;
+            element.style.color = color;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cartify | Smart Shopping</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            🛍️ <span>Cartify</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#categories">Categories</a>
+        </nav>
+
+        <button class="cart-btn" onclick="openCart()">
+            🛒 Cart
+            <span id="cart-count">0</span>
+        </button>
+        <button class="wishlist-btn" onclick="openWishlist()">
+    ❤️ Wishlist <span id="wishlistCount">0</span>
+</button>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="small-title">WELCOME TO CARTIFY</p>
+
+            <h1>
+                Shop smarter.<br>
+                Live better.
+            </h1>
+
+            <p>
+                Discover amazing products at great prices,
+                all in one place.
+            </p>
+
+            <button class="shop-btn" onclick="scrollToProducts()">
+                Shop Now →
+            </button>
+
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-circle">🛍️</div>
+            <h3>Everything you need</h3>
+            <p>Simple. Fast. Secure.</p>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+
+        <div class="section-heading">
+            <p>EXPLORE</p>
+            <h2>Shop by Category</h2>
+        </div>
+
+        <div class="category-grid">
+
+            <div class="category-card" onclick="filterCategory('Electronics')">
+                <span>💻</span>
+                <h3>Electronics</h3>
+                <p>Latest gadgets</p>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('Fashion')">
+                <span>👕</span>
+                <h3>Fashion</h3>
+                <p>Style for everyone</p>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('Home')">
+                <span>🏠</span>
+                <h3>Home</h3>
+                <p>Make it beautiful</p>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('All')">
+                <span>✨</span>
+                <h3>All Products</h3>
+                <p>Explore everything</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section class="products-section" id="products">
+
+        <div class="section-heading product-heading">
+
+            <div>
+                <p>OUR COLLECTION</p>
+                <h2>Popular Products</h2>
+            </div>
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products..."
+                    oninput="searchProducts()"
+                >
+                🔍
+            </div>
+
+        </div>
+
+        <div id="product-container" class="product-grid">
+
+            <!-- Products will come from Java backend -->
+
+        </div>
+
+    </section>
+
+
+    <!-- CART DRAWER -->
+    <div id="cart-overlay" class="overlay" onclick="closeCart()"></div>
+
+    <aside id="cart-drawer" class="cart-drawer">
+
+        <div class="cart-header">
+            <h2>Your Cart 🛒</h2>
+            <button onclick="closeCart()">✕</button>
+        </div>
+
+        <div id="cart-items">
+            <p class="empty-cart">Your cart is empty.</p>
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total">₹0</strong>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">
+                Place Order →
+            </button>
+
+        </div>
+
+    </aside>
+
+<!-- WISHLIST DRAWER -->
+<div id="wishlist-overlay" class="overlay" onclick="closeWishlist()"></div>
+
+<aside id="wishlist-drawer" class="cart-drawer">
+
+    <div class="cart-header">
+        <h2>Your Wishlist ❤️</h2>
+        <button onclick="closeWishlist()">✕</button>
+    </div>
+
+    <div id="wishlist-items">
+        <p class="empty-cart">Your wishlist is empty.</p>
+    </div>
+
+</aside>
+    <!-- SUCCESS MESSAGE -->
+    <div id="toast" class="toast">
+        Product added to cart! ✓
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="logo">
+            🛍️ <span>Cartify</span>
+        </div>
+
+        <p>Smart shopping made simple.</p>
+
+        <p class="copyright">
+            © 2026 Cartify. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
