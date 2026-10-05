@@ -1,4 +1,4 @@
-const API = "http://localhost:8080/api";
+const API = "https://cartify-java-1.onrender.com/api";
 
 let products = [];
 let cartItems = [];
